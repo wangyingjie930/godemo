@@ -68,7 +68,7 @@ func main() {
 		//数据加入签名
 		checksum := CheckSum(data)
 		data[2] = byte(checksum >> 8) //高8位放入
-		data[3] = byte(checksum)      //第8位放入
+		data[3] = byte(checksum)      //低8位放入, 溢出只保留低八位
 
 		//设置超时时间
 		conn.SetDeadline(time.Now().Add(time.Duration(timeout) * time.Millisecond))
@@ -98,7 +98,7 @@ func GetCommonArgs() {
 	flag.Parse()
 }
 
-//CheckSum 校验和计算
+// CheckSum 校验和计算
 func CheckSum(data []byte) uint16 {
 	var (
 		sum    uint32
