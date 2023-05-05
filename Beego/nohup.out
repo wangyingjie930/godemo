@@ -1,0 +1,31 @@
+2023/04/29 01:12:25.937 [1;34m[I][0m [parser.go:85]  /Users/wangyingjie/Documents/code/go/src/Beego/controllers no changed
+
+2023/04/29 01:12:25 26308 :8080
+2023/04/29 01:12:38.871 [1;44m[D][0m [router.go:955]  |      127.0.0.1|[97;42m 200 [0m|   2.732673ms|   match|[97;44m GET     [0m /     r:/
+
+2023/04/29 01:13:14 26308 Received SIGHUP. forking.
+2023/04/29 01:13:14 [0xc000126068]
+2023/04/29 01:13:14.076 [1;34m[I][0m [parser.go:85]  /Users/wangyingjie/Documents/code/go/src/Beego/controllers no changed
+
+2023/04/29 01:13:14 laddr :8080 ptr offset 0
+2023/04/29 01:13:14 26407 :8080
+2023/04/29 01:13:14 26308 Received SIGTERM.
+2023/04/29 01:13:14 26308 Waiting for connections to finish...
+2023/04/29 01:13:14 26308 [::]:8080 Listener closed.
+2023/04/29 01:13:14.077 [1;35m[C][0m [server.go:188]  ListenAndServe:  http: Server closed 26308
+
+2023/04/29 01:13:19.256 [1;44m[D][0m [router.go:955]  |      127.0.0.1|[97;42m 200 [0m|   3.737106ms|   match|[97;44m GET     [0m /     r:/
+
+2023/04/29 01:14:30 26407 Received SIGHUP. forking.
+2023/04/29 01:14:30 [0xc000012058]
+2023/04/29 01:14:30.158 [1;34m[I][0m [parser.go:85]  /Users/wangyingjie/Documents/code/go/src/Beego/controllers no changed
+
+2023/04/29 01:14:30 laddr :8080 ptr offset 0
+2023/04/29 01:14:30 26536 :8080
+2023/04/29 01:14:30 26407 Received SIGTERM.
+2023/04/29 01:14:30 26407 Waiting for connections to finish...
+2023/04/29 01:14:30 26407 [::]:8080 Listener closed.
+2023/04/29 01:14:30.159 [1;35m[C][0m [server.go:188]  ListenAndServe:  http: Server closed 26407
+
+2023/04/29 01:15:33.271 [1;44m[D][0m [router.go:955]  |      127.0.0.1|[97;42m 200 [0m|     236.62µs|   match|[97;44m GET     [0m /test/custom   r:/test/custom
+
