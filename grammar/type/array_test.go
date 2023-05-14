@@ -7,7 +7,9 @@
 package type_test
 
 import (
+	"encoding/json"
 	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -52,3 +54,76 @@ func TestArrayNil(t *testing.T) {
 	fmt.Println(k)
 	//输出: 9 3 2 enter2 enter2 enter2
 }
+
+type Person struct {
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+	City string `json:"city"`
+
+	A *string
+	B []string
+	C map[string]int
+}
+
+func TestJson(t *testing.T) {
+	jsonData := []byte(`{"name":"John", "age":30}`)
+
+	var personStruct Person
+	personStruct.City = "aaa"
+	personStruct.Age = 10
+	personStruct.Name = "bbb"
+
+	json.Unmarshal(jsonData, &personStruct)
+	fmt.Printf("%+v\n", personStruct)
+}
+
+func TestZero1(t1 *testing.T) {
+	r := Person{Age: 1, Name: ""}
+	v := reflect.ValueOf(r)
+	t := v.Type()
+	params := make(map[string]interface{})
+	for i := 0; i < v.NumField(); i++ {
+		field := t.Field(i)
+		value := v.Field(i)
+		if value.Kind() == reflect.Ptr {
+			if !value.IsNil() {
+				params[field.Name] = value.Elem().Interface()
+			}
+		} else if value.Kind() == reflect.Slice {
+			if !value.IsNil() {
+				params[field.Name] = value.Interface()
+			}
+		} else if !value.IsZero() {
+			params[field.Name] = value.Interface()
+		}
+	}
+}
+
+func TestJsonUnmarsh(t *testing.T) {
+	jsonString := `{"name": "John", "age": 30, "city": "New York"}`
+	var data map[string]interface{}
+	err := json.Unmarshal([]byte(jsonString), &data)
+	if err != nil {
+		fmt.Println("Error parsing JSON:", err)
+		return
+	}
+	fmt.Println(data)
+}
+
+/*func ConvertToUpdateParams(r interface{}) orm.Params {
+	v := reflect.ValueOf(r)
+	t := v.Type()
+	params := make(orm.Params)
+	for i := 0; i < v.NumField(); i++ {
+		field := t.Field(i)
+		value := v.Field(i)
+		if !value.IsZero() {
+			if value.Kind() == reflect.Ptr {
+				params[field.Name] = value.Elem().Interface()
+			} else {
+				params[field.Name] = value.Interface()
+			}
+		}
+	}
+	return params
+}*/

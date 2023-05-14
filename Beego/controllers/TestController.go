@@ -16,8 +16,8 @@ type TestController struct {
 }
 
 func (t *TestController) Get() {
-	id := t.Ctx.Input.Param(":id")
-	t.Ctx.Output.Body([]byte(id))
+	fmt.Println("hello")
+	t.Ctx.WriteString("hello")
 }
 
 func (t *TestController) CustomGet() {

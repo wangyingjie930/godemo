@@ -12,10 +12,6 @@ import (
 func init() {
 	beego.Router("/", &controllers.MainController{})
 
-	beego.Get("/test", func(ctx *context.Context) {
-		ctx.Output.Body([]byte("hello world!"))
-	})
-
 	beego.Router("/test/?:id", &controllers.TestController{})
 
 	beego.Router("/test/custom", &controllers.TestController{},

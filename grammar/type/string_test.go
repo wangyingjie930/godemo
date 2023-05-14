@@ -9,6 +9,7 @@ package type_test
 import (
 	"fmt"
 	"testing"
+	"unsafe"
 )
 
 func Test_String(t *testing.T) {
@@ -33,4 +34,12 @@ func (d Direction) String() string {
 func TestConvertString(t *testing.T) {
 	//如果类型定义了 String() 方法，当使用 fmt.Printf()、fmt.Print() 和 fmt.Println() 会自动使用 String() 方法，实现字符串的打印
 	fmt.Println(South) //输出: "South"
+}
+
+func TestConvertByteSlice(t *testing.T) {
+	data := []byte{'h', 'e', 'l', 'l', 'o'}
+	ret := *(*string)(unsafe.Pointer(&data))
+	fmt.Println(ret)
+	data[1] = '2'
+	fmt.Println(ret)
 }
