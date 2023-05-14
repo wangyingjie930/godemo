@@ -1,0 +1,16 @@
+## 关于如何使用pprof进行问题排查
+
+- [reference](https://blog.wolfogre.com/posts/go-ppof-practice/)
+- 先引入包: `import  _ "net/http/pprof"`
+- 之后即可在http://xxxxx/debug/pprof/进行查看
+- 进入排查命令终端
+
+  - 排查CPU占用过高: ```go tool pprof http://localhost:6060/debug/pprof/profile```
+  - 排查内存占用过高: ```go tool pprof http://localhost:6060/debug/pprof/heap```
+  - 排查频繁内存回收: ```go tool pprof http://localhost:6060/debug/pprof/allocs```
+  - 排查协程泄露: ```go tool pprof http://localhost:6060/debug/pprof/goroutine```
+  - 排查锁的争用: ```go tool pprof http://localhost:6060/debug/pprof/mutex```
+  - 排查阻塞操作: ```go tool pprof http://localhost:6060/debug/pprof/block```
+- 使用top, list, web命令进行定位文件行号
+- 代码修改
+- 11
